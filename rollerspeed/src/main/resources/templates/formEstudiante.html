@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"> 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <div th:insert="fragments/navbar.html"></div>
+    <section class="formulario">
+        <form th:action="@{/create}" th:object="${CrearEstudiante}" method="post">
+            <div class="form-group">
+                <label for="nombre">Nombre:</label>
+                <input type="text" th:field="*{nombre}" class="form-control" id="nombre" required>
+            </div>
+            <div class="form-group">
+                <label for="genero">Género:</label>
+                <select th:field="*{genero}" class="form-control" id="genero">
+                    <option th:each="genero : ${generos}" th:value="${genero}" th:text="${genero.name()}"></option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="fechaNacimiento">Fecha de Nacimiento:</label>
+                <input type="date" th:field="*{fechaNacimiento}" class="form-control" id="fechaNacimiento" required>
+            </div>
+            <div class="form-group">
+                <label for="correo">Correo:</label>
+                <input type="email" th:field="*{correo}" class="form-control" id="correo" required>
+            </div>
+            <div class="form-group">
+                <label for="telefono">Teléfono:</label>
+                <input type="tel" th:field="*{telefono}" class="form-control" id="telefono" required>
+            </div>
+            <div class="form-group">
+                <label for="medioPago">Medio de Pago:</label>
+                <select th:field="*{medioPago}" class="form-control" id="medioPago">
+                    <option th:each="medioPago : ${mediosPago}" th:value="${medioPago}" th:text="${medioPago.name()}"></option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Enviar</button>
+        </form>
+    </section>
+</body>
+</html>

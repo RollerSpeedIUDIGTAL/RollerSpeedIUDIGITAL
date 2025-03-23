@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("/rollerspeed")
-public class MainController {
+public class Indexcontroller {
 
     @GetMapping("/home")
     public String home(Model model) {
@@ -63,5 +63,11 @@ public class MainController {
             "Noche de patinaje libre: Todos los viernes."
         });
         return "eventos"; // Devuelve la vista "eventos.html"
+    }
+
+    @GetMapping("/formEstudiante")
+    public String formEstudiante() {
+
+        return "formEstudiante"; 
     }
 }
